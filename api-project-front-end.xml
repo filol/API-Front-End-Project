@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="api-project-front-end" default="all">
+  
+  
+  <property file="api-project-front-end.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+    <include name="*.ane"/>
+    <include name="*.klib"/>
+    <include name="*.apk"/>
+    <include name="*.swc"/>
+    <include name="*.war"/>
+    <include name="*.zip"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/ext/access-bridge-64.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunmscapi.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.maven:_com.fasterxml.jackson.core:jackson-core:2.9.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-core/2.9.6/jackson-core-2.9.6.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.api-client:google-api-client:1.25.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/api-client/google-api-client/1.25.0/google-api-client-1.25.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.apis:google-api-services-analyticsreporting:v4-rev133-1.25.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/apis/google-api-services-analyticsreporting/v4-rev133-1.25.0/google-api-services-analyticsreporting-v4-rev133-1.25.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.code.findbugs:jsr305:1.3.9.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.code.gson:gson:2.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/code/gson/gson/2.1/gson-2.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.guava:guava:20.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/guava/guava/20.0/guava-20.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.http-client:google-http-client-gson:1.21.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/http-client/google-http-client-gson/1.21.0/google-http-client-gson-1.21.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.http-client:google-http-client-jackson2:1.25.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/http-client/google-http-client-jackson2/1.25.0/google-http-client-jackson2-1.25.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.http-client:google-http-client:1.21.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/http-client/google-http-client/1.21.0/google-http-client-1.21.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.oauth-client:google-oauth-client:1.25.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/oauth-client/google-oauth-client/1.25.0/google-oauth-client-1.25.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.sun.jersey:jersey-bundle:1.19.4.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/sun/jersey/jersey-bundle/1.19.4/jersey-bundle-1.19.4.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.sun.jersey:jersey-core:1.19.4.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/sun/jersey/jersey-core/1.19.4/jersey-core-1.19.4.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.sun.jersey:jersey-json:1.19.4.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/sun/jersey/jersey-json/1.19.4/jersey-json-1.19.4.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.sun.xml.bind:jaxb-impl:2.2.3-1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/sun/xml/bind/jaxb-impl/2.2.3-1/jaxb-impl-2.2.3-1.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-codec:commons-codec:1.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-codec/commons-codec/1.3/commons-codec-1.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-logging:commons-logging:1.1.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.activation:activation:1.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/activation/activation/1.1/activation-1.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.servlet:javax.servlet-api:3.0.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/servlet/javax.servlet-api/3.0.1/javax.servlet-api-3.0.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.ws.rs:jsr311-api:1.1.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/ws/rs/jsr311-api/1.1.1/jsr311-api-1.1.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.xml.bind:jaxb-api:2.2.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/xml/bind/jaxb-api/2.2.2/jaxb-api-2.2.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.xml.stream:stax-api:1.0-2.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/xml/stream/stax-api/1.0-2/stax-api-1.0-2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.httpcomponents:httpclient:4.0.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/httpcomponents/httpclient/4.0.1/httpclient-4.0.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.httpcomponents:httpcore:4.0.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/httpcomponents/httpcore/4.0.1/httpcore-4.0.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/jackson/jackson-core-asl/1.9.2/jackson-core-asl-1.9.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.jackson:jackson-jaxrs:1.9.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/jackson/jackson-jaxrs/1.9.2/jackson-jaxrs-1.9.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/jackson/jackson-mapper-asl/1.9.2/jackson-mapper-asl-1.9.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.jackson:jackson-xc:1.9.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/jackson/jackson-xc/1.9.2/jackson-xc-1.9.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.jettison:jettison:1.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/jettison/jettison/1.1/jettison-1.1.jar"/>
+  </path>
+  
+  
+  <!-- Global Libraries -->
+  
+  
+  <!-- Application Server Libraries -->
+  
+  <path id="library.tomcat_9.0.14.classpath">
+    <pathelement location="D:/WINDOWS/Programmes/Tomcat9-14/lib/jsp-api.jar"/>
+    <pathelement location="D:/WINDOWS/Programmes/Tomcat9-14/lib/servlet-api.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <fileset dir="${javac2.home}">
+      <include name="javac2.jar"/>
+      <include name="jdom.jar"/>
+      <include name="asm-all*.jar"/>
+      <include name="forms-*.jar"/>
+    </fileset>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module api-project-front-end -->
+  
+  <dirname property="module.api-project-front-end.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.api-project-front-end" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.api-project-front-end" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.api-project-front-end" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.api-project-front-end" value="-encoding UTF-8 -source 5 -target 1.5 ${compiler.args}"/>
+  
+  <property name="api-project-front-end.output.dir" value="${module.api-project-front-end.basedir}/target/classes"/>
+  <property name="api-project-front-end.testoutput.dir" value="${module.api-project-front-end.basedir}/target/test-classes"/>
+  
+  <path id="api-project-front-end.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="api-project-front-end.module.production.classpath">
+    <path refid="${module.jdk.classpath.api-project-front-end}"/>
+    <path refid="library.tomcat_9.0.14.classpath"/>
+    <path refid="library.maven:_javax.servlet:javax.servlet-api:3.0.1.classpath"/>
+    <path refid="library.maven:_com.sun.jersey:jersey-bundle:1.19.4.classpath"/>
+    <path refid="library.maven:_javax.ws.rs:jsr311-api:1.1.1.classpath"/>
+    <path refid="library.maven:_com.sun.jersey:jersey-json:1.19.4.classpath"/>
+    <path refid="library.maven:_org.codehaus.jettison:jettison:1.1.classpath"/>
+    <path refid="library.maven:_com.sun.xml.bind:jaxb-impl:2.2.3-1.classpath"/>
+    <path refid="library.maven:_javax.xml.bind:jaxb-api:2.2.2.classpath"/>
+    <path refid="library.maven:_javax.xml.stream:stax-api:1.0-2.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-jaxrs:1.9.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-xc:1.9.2.classpath"/>
+    <path refid="library.maven:_com.sun.jersey:jersey-core:1.19.4.classpath"/>
+    <path refid="library.maven:_com.google.apis:google-api-services-analyticsreporting:v4-rev133-1.25.0.classpath"/>
+    <path refid="library.maven:_com.google.api-client:google-api-client:1.25.0.classpath"/>
+    <path refid="library.maven:_com.google.oauth-client:google-oauth-client:1.25.0.classpath"/>
+    <path refid="library.maven:_com.google.http-client:google-http-client-jackson2:1.25.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.9.6.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:20.0.classpath"/>
+    <path refid="library.maven:_com.google.http-client:google-http-client-gson:1.21.0.classpath"/>
+    <path refid="library.maven:_com.google.http-client:google-http-client:1.21.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:1.3.9.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.0.1.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.0.1.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.3.classpath"/>
+    <path refid="library.maven:_com.google.code.gson:gson:2.1.classpath"/>
+  </path>
+  
+  <path id="api-project-front-end.runtime.production.module.classpath">
+    <pathelement location="${api-project-front-end.output.dir}"/>
+    <path refid="library.maven:_com.sun.jersey:jersey-bundle:1.19.4.classpath"/>
+    <path refid="library.maven:_javax.ws.rs:jsr311-api:1.1.1.classpath"/>
+    <path refid="library.maven:_com.sun.jersey:jersey-json:1.19.4.classpath"/>
+    <path refid="library.maven:_org.codehaus.jettison:jettison:1.1.classpath"/>
+    <path refid="library.maven:_com.sun.xml.bind:jaxb-impl:2.2.3-1.classpath"/>
+    <path refid="library.maven:_javax.xml.bind:jaxb-api:2.2.2.classpath"/>
+    <path refid="library.maven:_javax.xml.stream:stax-api:1.0-2.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-jaxrs:1.9.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-xc:1.9.2.classpath"/>
+    <path refid="library.maven:_com.sun.jersey:jersey-core:1.19.4.classpath"/>
+    <path refid="library.maven:_com.google.apis:google-api-services-analyticsreporting:v4-rev133-1.25.0.classpath"/>
+    <path refid="library.maven:_com.google.api-client:google-api-client:1.25.0.classpath"/>
+    <path refid="library.maven:_com.google.oauth-client:google-oauth-client:1.25.0.classpath"/>
+    <path refid="library.maven:_com.google.http-client:google-http-client-jackson2:1.25.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.9.6.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:20.0.classpath"/>
+    <path refid="library.maven:_com.google.http-client:google-http-client-gson:1.21.0.classpath"/>
+    <path refid="library.maven:_com.google.http-client:google-http-client:1.21.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:1.3.9.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.0.1.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.0.1.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.3.classpath"/>
+    <path refid="library.maven:_com.google.code.gson:gson:2.1.classpath"/>
+  </path>
+  
+  <path id="api-project-front-end.module.classpath">
+    <path refid="${module.jdk.classpath.api-project-front-end}"/>
+    <pathelement location="${api-project-front-end.output.dir}"/>
+    <path refid="library.tomcat_9.0.14.classpath"/>
+    <path refid="library.maven:_javax.servlet:javax.servlet-api:3.0.1.classpath"/>
+    <path refid="library.maven:_com.sun.jersey:jersey-bundle:1.19.4.classpath"/>
+    <path refid="library.maven:_javax.ws.rs:jsr311-api:1.1.1.classpath"/>
+    <path refid="library.maven:_com.sun.jersey:jersey-json:1.19.4.classpath"/>
+    <path refid="library.maven:_org.codehaus.jettison:jettison:1.1.classpath"/>
+    <path refid="library.maven:_com.sun.xml.bind:jaxb-impl:2.2.3-1.classpath"/>
+    <path refid="library.maven:_javax.xml.bind:jaxb-api:2.2.2.classpath"/>
+    <path refid="library.maven:_javax.xml.stream:stax-api:1.0-2.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-jaxrs:1.9.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-xc:1.9.2.classpath"/>
+    <path refid="library.maven:_com.sun.jersey:jersey-core:1.19.4.classpath"/>
+    <path refid="library.maven:_com.google.apis:google-api-services-analyticsreporting:v4-rev133-1.25.0.classpath"/>
+    <path refid="library.maven:_com.google.api-client:google-api-client:1.25.0.classpath"/>
+    <path refid="library.maven:_com.google.oauth-client:google-oauth-client:1.25.0.classpath"/>
+    <path refid="library.maven:_com.google.http-client:google-http-client-jackson2:1.25.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.9.6.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:20.0.classpath"/>
+    <path refid="library.maven:_com.google.http-client:google-http-client-gson:1.21.0.classpath"/>
+    <path refid="library.maven:_com.google.http-client:google-http-client:1.21.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:1.3.9.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.0.1.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.0.1.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.3.classpath"/>
+    <path refid="library.maven:_com.google.code.gson:gson:2.1.classpath"/>
+  </path>
+  
+  <path id="api-project-front-end.runtime.module.classpath">
+    <pathelement location="${api-project-front-end.testoutput.dir}"/>
+    <pathelement location="${api-project-front-end.output.dir}"/>
+    <path refid="library.tomcat_9.0.14.classpath"/>
+    <path refid="library.maven:_javax.servlet:javax.servlet-api:3.0.1.classpath"/>
+    <path refid="library.maven:_com.sun.jersey:jersey-bundle:1.19.4.classpath"/>
+    <path refid="library.maven:_javax.ws.rs:jsr311-api:1.1.1.classpath"/>
+    <path refid="library.maven:_com.sun.jersey:jersey-json:1.19.4.classpath"/>
+    <path refid="library.maven:_org.codehaus.jettison:jettison:1.1.classpath"/>
+    <path refid="library.maven:_com.sun.xml.bind:jaxb-impl:2.2.3-1.classpath"/>
+    <path refid="library.maven:_javax.xml.bind:jaxb-api:2.2.2.classpath"/>
+    <path refid="library.maven:_javax.xml.stream:stax-api:1.0-2.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-jaxrs:1.9.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-xc:1.9.2.classpath"/>
+    <path refid="library.maven:_com.sun.jersey:jersey-core:1.19.4.classpath"/>
+    <path refid="library.maven:_com.google.apis:google-api-services-analyticsreporting:v4-rev133-1.25.0.classpath"/>
+    <path refid="library.maven:_com.google.api-client:google-api-client:1.25.0.classpath"/>
+    <path refid="library.maven:_com.google.oauth-client:google-oauth-client:1.25.0.classpath"/>
+    <path refid="library.maven:_com.google.http-client:google-http-client-jackson2:1.25.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.9.6.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:20.0.classpath"/>
+    <path refid="library.maven:_com.google.http-client:google-http-client-gson:1.21.0.classpath"/>
+    <path refid="library.maven:_com.google.http-client:google-http-client:1.21.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:1.3.9.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.0.1.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.0.1.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.3.classpath"/>
+    <path refid="library.maven:_com.google.code.gson:gson:2.1.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.api-project-front-end">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.api-project-front-end">
+    <patternset refid="excluded.from.module.api-project-front-end"/>
+  </patternset>
+  
+  <path id="api-project-front-end.module.sourcepath">
+    <dirset dir="${module.api-project-front-end.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="api-project-front-end.module.test.sourcepath">
+    <dirset dir="${module.api-project-front-end.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.api-project-front-end" depends="compile.module.api-project-front-end.production,compile.module.api-project-front-end.tests" description="Compile module api-project-front-end"/>
+  
+  <target name="compile.module.api-project-front-end.production" depends="register.custom.compilers" description="Compile module api-project-front-end; production classes">
+    <mkdir dir="${api-project-front-end.output.dir}"/>
+    <javac2 destdir="${api-project-front-end.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.api-project-front-end}/javac">
+      <compilerarg line="${compiler.args.api-project-front-end}"/>
+      <bootclasspath refid="api-project-front-end.module.bootclasspath"/>
+      <classpath refid="api-project-front-end.module.production.classpath"/>
+      <src refid="api-project-front-end.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.api-project-front-end"/>
+    </javac2>
+    
+    <copy todir="${api-project-front-end.output.dir}">
+      <fileset dir="${module.api-project-front-end.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.api-project-front-end.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.api-project-front-end.tests" depends="register.custom.compilers,compile.module.api-project-front-end.production" description="compile module api-project-front-end; test classes" unless="skip.tests">
+    <mkdir dir="${api-project-front-end.testoutput.dir}"/>
+    <javac2 destdir="${api-project-front-end.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.api-project-front-end}/javac">
+      <compilerarg line="${compiler.args.api-project-front-end}"/>
+      <bootclasspath refid="api-project-front-end.module.bootclasspath"/>
+      <classpath refid="api-project-front-end.module.classpath"/>
+      <src refid="api-project-front-end.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.api-project-front-end"/>
+    </javac2>
+    
+    <copy todir="${api-project-front-end.testoutput.dir}">
+      <fileset dir="${module.api-project-front-end.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.api-project-front-end" description="cleanup module">
+    <delete dir="${api-project-front-end.output.dir}"/>
+    <delete dir="${api-project-front-end.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.api-project-front-end, clean.artifact.api-project-front-end" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.api-project-front-end" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.api-project-front-end" value="${basedir}/out/artifacts/api_project_front_end"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="clean.artifact.api-project-front-end" description="clean api-project-front-end artifact output">
+    <delete dir="${artifact.output.api-project-front-end}"/>
+  </target>
+  
+  <target name="artifact.api-project-front-end" depends="init.artifacts, compile.module.api-project-front-end" description="Build &#39;api-project-front-end&#39; artifact">
+    <mkdir dir="${artifact.output.api-project-front-end}"/>
+    <copy todir="${artifact.output.api-project-front-end}">
+      <fileset dir="${basedir}/web"/>
+    </copy>
+    <mkdir dir="${artifact.output.api-project-front-end}/WEB-INF"/>
+    <copy file="${basedir}/web/WEB-INF/web.xml" tofile="${artifact.output.api-project-front-end}/WEB-INF/web.xml"/>
+    <mkdir dir="${artifact.output.api-project-front-end}/WEB-INF"/>
+    <mkdir dir="${artifact.output.api-project-front-end}/WEB-INF/classes"/>
+    <copy todir="${artifact.output.api-project-front-end}/WEB-INF/classes">
+      <fileset dir="${api-project-front-end.output.dir}"/>
+    </copy>
+    <mkdir dir="${artifact.output.api-project-front-end}/WEB-INF/lib"/>
+    <copy file="${path.variable.maven_repository}/com/sun/jersey/jersey-bundle/1.19.4/jersey-bundle-1.19.4.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/jersey-bundle-1.19.4.jar"/>
+    <copy file="${path.variable.maven_repository}/javax/ws/rs/jsr311-api/1.1.1/jsr311-api-1.1.1.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/jsr311-api-1.1.1.jar"/>
+    <copy file="${path.variable.maven_repository}/com/sun/jersey/jersey-json/1.19.4/jersey-json-1.19.4.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/jersey-json-1.19.4.jar"/>
+    <copy file="${path.variable.maven_repository}/org/codehaus/jettison/jettison/1.1/jettison-1.1.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/jettison-1.1.jar"/>
+    <copy file="${path.variable.maven_repository}/com/sun/xml/bind/jaxb-impl/2.2.3-1/jaxb-impl-2.2.3-1.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/jaxb-impl-2.2.3-1.jar"/>
+    <copy file="${path.variable.maven_repository}/javax/xml/bind/jaxb-api/2.2.2/jaxb-api-2.2.2.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/jaxb-api-2.2.2.jar"/>
+    <copy file="${path.variable.maven_repository}/javax/xml/stream/stax-api/1.0-2/stax-api-1.0-2.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/stax-api-1.0-2.jar"/>
+    <copy file="${path.variable.maven_repository}/javax/activation/activation/1.1/activation-1.1.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/activation-1.1.jar"/>
+    <copy file="${path.variable.maven_repository}/org/codehaus/jackson/jackson-core-asl/1.9.2/jackson-core-asl-1.9.2.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/jackson-core-asl-1.9.2.jar"/>
+    <copy file="${path.variable.maven_repository}/org/codehaus/jackson/jackson-mapper-asl/1.9.2/jackson-mapper-asl-1.9.2.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/jackson-mapper-asl-1.9.2.jar"/>
+    <copy file="${path.variable.maven_repository}/org/codehaus/jackson/jackson-jaxrs/1.9.2/jackson-jaxrs-1.9.2.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/jackson-jaxrs-1.9.2.jar"/>
+    <copy file="${path.variable.maven_repository}/org/codehaus/jackson/jackson-xc/1.9.2/jackson-xc-1.9.2.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/jackson-xc-1.9.2.jar"/>
+    <copy file="${path.variable.maven_repository}/com/sun/jersey/jersey-core/1.19.4/jersey-core-1.19.4.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/jersey-core-1.19.4.jar"/>
+    <copy file="${path.variable.maven_repository}/com/google/apis/google-api-services-analyticsreporting/v4-rev133-1.25.0/google-api-services-analyticsreporting-v4-rev133-1.25.0.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/google-api-services-analyticsreporting-v4-rev133-1.25.0.jar"/>
+    <copy file="${path.variable.maven_repository}/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/jsr305-1.3.9.jar"/>
+    <copy file="${path.variable.maven_repository}/com/google/http-client/google-http-client/1.21.0/google-http-client-1.21.0.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/google-http-client-1.21.0.jar"/>
+    <copy file="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-core/2.9.6/jackson-core-2.9.6.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/jackson-core-2.9.6.jar"/>
+    <copy file="${path.variable.maven_repository}/com/google/api-client/google-api-client/1.25.0/google-api-client-1.25.0.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/google-api-client-1.25.0.jar"/>
+    <copy file="${path.variable.maven_repository}/com/google/code/gson/gson/2.1/gson-2.1.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/gson-2.1.jar"/>
+    <copy file="${path.variable.maven_repository}/com/google/http-client/google-http-client-gson/1.21.0/google-http-client-gson-1.21.0.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/google-http-client-gson-1.21.0.jar"/>
+    <copy file="${path.variable.maven_repository}/com/google/oauth-client/google-oauth-client/1.25.0/google-oauth-client-1.25.0.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/google-oauth-client-1.25.0.jar"/>
+    <copy file="${path.variable.maven_repository}/commons-codec/commons-codec/1.3/commons-codec-1.3.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/commons-codec-1.3.jar"/>
+    <copy file="${path.variable.maven_repository}/org/apache/httpcomponents/httpclient/4.0.1/httpclient-4.0.1.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/httpclient-4.0.1.jar"/>
+    <copy file="${path.variable.maven_repository}/org/apache/httpcomponents/httpcore/4.0.1/httpcore-4.0.1.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/httpcore-4.0.1.jar"/>
+    <copy file="${path.variable.maven_repository}/com/google/http-client/google-http-client-jackson2/1.25.0/google-http-client-jackson2-1.25.0.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/google-http-client-jackson2-1.25.0.jar"/>
+    <copy file="${path.variable.maven_repository}/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/commons-logging-1.1.1.jar"/>
+    <copy file="${path.variable.maven_repository}/com/google/guava/guava/20.0/guava-20.0.jar" tofile="${artifact.output.api-project-front-end}/WEB-INF/lib/guava-20.0.jar"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.api-project-front-end" description="Build all artifacts">
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>
