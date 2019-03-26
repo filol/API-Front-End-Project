@@ -6,6 +6,4 @@ public class Events {
         this.name=name;
         this.value=value;
     }
-
-    Events(){}
 }
