@@ -205,7 +205,7 @@ public class GoogleAnalytics {
 
                 for (DateRangeValues values : metrics) {
                     for (int k = 0; k < values.getValues().size() && k < metricHeaders.size(); k++) {
-                        eventsArrayList.add(new Events(dimensions.get(0), Integer.valueOf(values.getValues().get(k))));
+                        eventsArrayList.add(new Events(dimensions.get(0), Float.valueOf(values.getValues().get(k))));
                     }
                 }
             }
@@ -291,7 +291,7 @@ public class GoogleAnalytics {
             AnalyticsReporting service = initializeAnalyticsReporting();
             GetReportsResponse response = getAverageReportAllLabels(service);
             ArrayList<Events> events = getEventsList(response);
-            int value = 0;
+            float value = 0;
             for (Events event : events) {
                 if (event.name.equals("findIn")) {
                     value += event.value;

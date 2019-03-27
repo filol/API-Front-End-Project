@@ -1,8 +1,8 @@
 public class Events {
     String name;
-    int value;
+    float value;
 
-    Events(String name, int value){
+    Events(String name, float value){
         this.name=name;
         this.value=value;
     }
